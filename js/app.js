@@ -18,6 +18,7 @@ const PRICE_KM = 0.21;
 const DISCOUNT_UNDER_18 = 0.2;
 const DISCOUNT_OVER_65 = 0.4;
 const DISCOUNT_NOT = 0;
+const DISCOUNT_NOT_SELECT = "Discount non selezionato";
 //     - Creazione del evento onclick
 btnDOMElement.addEventListener("click", function() {
     //         - Recupero il nome dal input
@@ -40,15 +41,18 @@ btnDOMElement.addEventListener("click", function() {
     //                 - passengerDiscountEntity = DISCOUNT_OVER_65
     //             ALTRIMENTI () 
     //                 - passengerDiscountEntity = DISCOUNT_NOT
-    if (inputDiscountSelectDOMElement.value == 0) {
+    if (inputDiscountSelectDOMElement.value == 1) {
         var passengerDiscountEntity = DISCOUNT_UNDER_18
         console.log("Percentuale di sconto è " + DISCOUNT_UNDER_18 * 100 + "%", typeof passengerDiscountEntity);
-    } else if (inputDiscountSelectDOMElement.value == 2) {
+    } else if (inputDiscountSelectDOMElement.value == 3) {
         var passengerDiscountEntity = DISCOUNT_OVER_65
         console.log("Percentuale di sconto è " + DISCOUNT_OVER_65 * 100 + "%", typeof passengerDiscountEntity);
-    } else {
+    } else if (inputDiscountSelectDOMElement.value == 2) {
         var passengerDiscountEntity = DISCOUNT_NOT
         console.log("Percentuale di sconto è " + DISCOUNT_NOT * 100 + "%", typeof passengerDiscountEntity);
+    } else {
+        var passengerDiscountEntity = DISCOUNT_NOT_SELECT
+        console.log(DISCOUNT_NOT_SELECT, typeof passengerDiscountEntity);
     }
     //         - Creare la variabile "priceBasic" e calcolare il suo valore
     const priceBasic = Number((distanceTrip * PRICE_KM).toFixed(2));
@@ -61,6 +65,37 @@ btnDOMElement.addEventListener("click", function() {
     //             - totalPrice = priceBasic - discountPassenger 
     const totalPrice = Number((priceBasic - discountPassenger).toFixed(2));
     console.log("Prezzo totale è " + totalPrice + " " + "Euro", typeof totalPrice);
+
+
+    // - Controllo corretto inserimento dei dati
+        const alertDOMElement = document.getElementById("alert");
+        if (passengerName === "") {
+            var passengerNameUndefined = "Inserisci il nome"
+            // pNode.appendChild(document.createTextNode(passengerNameUndefined + "." + " "));
+            alertDOMElement.innerHTML += "<h1>" + passengerNameUndefined + "</h1>"
+            console.log("nome non inserito", typeof passengerNameUndefined)
+        }
+        
+        if (passengerSurname === "") {
+            var passengerSurnameUndefined = "Inserisci il cognome"
+            // pNode.appendChild(document.createTextNode(passengerSurnameUndefined + "." + " "));
+            alertDOMElement.innerHTML += "<h1>" + passengerSurnameUndefined + "</h1>"
+            console.log("Cognome non inserito", typeof passengerSurnameUndefined)
+        }
+        
+        if (isNaN(distanceTrip)) {
+            var distanceTripNull = "Inserisci la distanza"
+            // pNode.appendChild(document.createTextNode(distanceTripNull + "." + " "));
+            alertDOMElement.innerHTML += "<h1>" + distanceTripNull + "</h1>"
+            console.log("Distanza non inserita")
+        }
+        
+        if (isNaN(passengerDiscountEntity)) {
+            var passengerDiscountEntitypNull = "Selezioni tipo di discount"
+            // pNode.appendChild(document.createTextNode(passengerAgepNull + "." + " "));
+            alertDOMElement.innerHTML += "<h1>" + passengerDiscountEntitypNull + "</h1>"
+            console.log("Eta non inserita")
+        }
 });
       
 //         - Creare console log per controllo
