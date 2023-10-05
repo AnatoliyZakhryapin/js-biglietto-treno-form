@@ -2,7 +2,7 @@
 
 - Creare input per i inserimento dei dati
     - Creare input per Nome, Cognome e distanza
-    - Creare select per eta
+    - Creare select per discount
 - Creare Button 
 - Richiesta Nome
     - Creare la variabile "passengerName"
@@ -14,10 +14,6 @@
     - Creare la variabile "distanceTrip"
     - Pescare il dato dal input di riferimento
     - Trasformare il valore dalla stringa in numero con decimali (evitando anche Erorre del inserimento con la virgola)
-- Richiesta dell'età 
-    - Creare la variabile "passengerAge" 
-    - Pescare il dato dal input di riferimento
-    - Trasformare il valore dalla stringa in numero con decimali
 - Controllo corretto inserimento dei dati
 - Calcolo del prezzo totale del viaggio
     - Creacre la funzione totalPrice
