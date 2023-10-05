@@ -19,17 +19,16 @@
         - Recupero il distanza dal input
             - recupero il valore presente nell'input e lo salvo in una variabile distanceTrip
         - Recupero la tipologia dello sconto input
-            - recupero il valore presente nell'input e lo salvo in una variabile
-        - Creare la variabile "priceBasic"
-        - Calcolare il prezzo base 
-             priceBasic = distanceTrip * PRICE_KM
-        - Creare la variabile "passengerDiscountEntity"
+            - recupero il valore presente nell'input e lo salvo in una variabile passengerDiscountEntity 
             -  SE (inputDiscountSelectDOMElement.value == 0) 
                 - passengerDiscountEntity = DISCOUNT_UNDER_18
             ALTRIMENTI SE (inputDiscountSelectDOMElement.value == 1) 
                 - passengerDiscountEntity = DISCOUNT_OVER_65
             ALTRIMENTI () 
                 - passengerDiscountEntity = DISCOUNT_NOT
+        - Creare la variabile "priceBasic"
+        - Calcolare il prezzo base 
+             priceBasic = distanceTrip * PRICE_KM
         - Creare la variabile "dicountPassenger"
             - discountPassenger = priceBasic * passengerDiscountEntity
         - Creare la variabile "totalPrice"
