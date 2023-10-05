@@ -1,8 +1,9 @@
 # Calcolo del prezzo del biglietto del treno
 
 - Creare input per i inserimento dei dati
-- Creare il buttun
-
+    - Creare input per Nome, Cognome e distanza
+    - Creare select per eta
+- Creare Button 
 - Richiesta Nome
     - Creare la variabile "passengerName"
     - Pescare il dato dal input di riferimento
