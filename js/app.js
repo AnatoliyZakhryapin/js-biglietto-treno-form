@@ -80,39 +80,47 @@ btnDOMElement.addEventListener("click", function() {
     // - Controllo corretto inserimento dei dati
         const alertDOMElement = document.getElementById("alert");
         if (passengerName === "") {
-            var passengerNameUndefined = "Inserisci il nome"
+            // var passengerNameUndefined = "Inserisci il nome"
             // pNode.appendChild(document.createTextNode(passengerNameUndefined + "." + " "));
-            alertDOMElement.innerHTML += "<h1 id=alertName>" + passengerNameUndefined + "</h1>"
+            // alertDOMElement.innerHTML += "<h1 id=alertName>" + passengerNameUndefined + "</h1>"
+            document.getElementById("alertName").classList.remove ("d-none");
             console.log("nome non inserito", typeof passengerNameUndefined)
         } else {
             document.getElementById("alert").classList.add ("d-none");
+            document.getElementById("alertName").classList.add ("d-none");
         }
         
         if (passengerSurname === "") {
-            var passengerSurnameUndefined = "Inserisci il cognome"
+            // var passengerSurnameUndefined = "Inserisci il cognome"
             // pNode.appendChild(document.createTextNode(passengerSurnameUndefined + "." + " "));
-            alertDOMElement.innerHTML += "<h1 id=alertSurname>" + passengerSurnameUndefined + "</h1>"
+            // alertDOMElement.innerHTML += "<h1 id=alertSurname>" + passengerSurnameUndefined + "</h1>"
+            document.getElementById("alertSurname").classList.remove ("d-none");
             console.log("Cognome non inserito", typeof passengerSurnameUndefined)
         } else {
             document.getElementById("alert").classList.add ("d-none");
+            document.getElementById("alertSurname").classList.add ("d-none");
         }
         
         if (isNaN(distanceTrip) || distanceTrip < 0) {
-            var distanceTripNull = "Inserisci la distanza"
+            // var distanceTripNull = "Inserisci la distanza"
             // pNode.appendChild(document.createTextNode(distanceTripNull + "." + " "));
-            alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
+            // alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
+            document.getElementById("alertDistance").classList.remove ("d-none");
             console.log("Distanza non inserita")
         } else {
             document.getElementById("alert").classList.add ("d-none");
+            document.getElementById("alertDistance").classList.add ("d-none");
         }
         
         if (isNaN(passengerDiscountEntity)) {
-            var passengerDiscountEntitypNull = "Selezioni tipo di'"
+            // var passengerDiscountEntitypNull = "Selezioni tipo di'"
             // pNode.appendChild(document.createTextNode(passengerAgepNull + "." + " "));
-            alertDOMElement.innerHTML += "<h1>" + passengerDiscountEntitypNull + "</h1>"
+            // alertDOMElement.innerHTML += "<h1>" + passengerDiscountEntitypNull + "</h1>"
+            document.getElementById("alertDiscountNull").classList.remove ("d-none");
             console.log("Eta non inserita")
         } else {
             document.getElementById("alert").classList.add ("d-none");
+            document.getElementById("alertDiscountNull").classList.add ("d-none");
         }
 
         if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip < 0 || inputDiscountSelectDOMElement.value == 0) {
