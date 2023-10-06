@@ -102,15 +102,17 @@ btnDOMElement.addEventListener("click", function() {
         }
         
         if (isNaN(distanceTrip)) {
-            // var distanceTripNull = "Inserisci la distanza"
+            var distanceTripNull = "Inserisci la distanza"
             // pNode.appendChild(document.createTextNode(distanceTripNull + "." + " "));
             // alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
             document.getElementById("alertDistance").classList.remove ("d-none");
-            console.log("Distanza non inserita")
+            document.getElementById("alertDistance").innerHTML = distanceTripNull;
+            console.log("Distanza non inserita");
         } else if (distanceTrip <= 0) {
+            var distanceTripNull = "Il valore di distanza deve essere maggiore di 0"
             document.getElementById("alertDistance").classList.remove ("d-none");
-            document.getElementById("alertDistance").innerHTML = "Il valore di distanza deve essere maggiore di 0"
-            console.log("Distanza non inserita")
+            document.getElementById("alertDistance").innerHTML = distanceTripNull;
+            console.log("Distanza non inserita");
         } else {
             document.getElementById("alert").classList.add ("d-none");
             document.getElementById("alertDistance").classList.add ("d-none");
@@ -127,7 +129,7 @@ btnDOMElement.addEventListener("click", function() {
             document.getElementById("alertDiscountNull").classList.add ("d-none");
         }
 
-        if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip < 0 || inputDiscountSelectDOMElement.value == 0) {
+        if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip <= 0 || inputDiscountSelectDOMElement.value == 0) {
             alert("I dati non sono inserite correttamente!")
             document.getElementById("alert").classList.remove ("d-none");
         } else {
