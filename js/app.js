@@ -101,11 +101,15 @@ btnDOMElement.addEventListener("click", function() {
             document.getElementById("alertSurname").classList.add ("d-none");
         }
         
-        if (isNaN(distanceTrip) || distanceTrip < 0) {
+        if (isNaN(distanceTrip)) {
             // var distanceTripNull = "Inserisci la distanza"
             // pNode.appendChild(document.createTextNode(distanceTripNull + "." + " "));
             // alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
             document.getElementById("alertDistance").classList.remove ("d-none");
+            console.log("Distanza non inserita")
+        } else if (distanceTrip <= 0) {
+            document.getElementById("alertDistance").classList.remove ("d-none");
+            document.getElementById("alertDistance").innerHTML = "Il valore di distanza deve essere maggiore di 0"
             console.log("Distanza non inserita")
         } else {
             document.getElementById("alert").classList.add ("d-none");
