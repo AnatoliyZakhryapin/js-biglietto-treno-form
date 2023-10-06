@@ -43,16 +43,21 @@ btnDOMElement.addEventListener("click", function() {
     //                 - passengerDiscountEntity = DISCOUNT_NOT
     if (inputDiscountSelectDOMElement.value == 1) {
         var passengerDiscountEntity = DISCOUNT_UNDER_18
+        var categoryDiscount = "Sconto Under18";
         console.log("Percentuale di sconto è " + DISCOUNT_UNDER_18 * 100 + "%", typeof passengerDiscountEntity);
     } else if (inputDiscountSelectDOMElement.value == 3) {
         var passengerDiscountEntity = DISCOUNT_OVER_65
+        var categoryDiscount = "Sconto Over65";
         console.log("Percentuale di sconto è " + DISCOUNT_OVER_65 * 100 + "%", typeof passengerDiscountEntity);
     } else if (inputDiscountSelectDOMElement.value == 2) {
         var passengerDiscountEntity = DISCOUNT_NOT
+        var categoryDiscount = "non applicato";
         console.log("Percentuale di sconto è " + DISCOUNT_NOT * 100 + "%", typeof passengerDiscountEntity);
     } else {
         var passengerDiscountEntity = DISCOUNT_NOT_SELECT
+        var categoryDiscount = "non applicato";
         console.log(DISCOUNT_NOT_SELECT, typeof passengerDiscountEntity);
+        console.dir(passengerDiscountEntity)
     }
     //         - Creare la variabile "priceBasic" e calcolare il suo valore
     const priceBasic = Number((distanceTrip * PRICE_KM).toFixed(2));
@@ -65,45 +70,74 @@ btnDOMElement.addEventListener("click", function() {
     //             - totalPrice = priceBasic - discountPassenger 
     const totalPrice = Number((priceBasic - discountPassenger).toFixed(2));
     console.log("Prezzo totale è " + totalPrice + " " + "Euro", typeof totalPrice);
-
-
+   
+    // btnDOMElement.dataset.bsToggle = "modal"
+    // console.dir(btnDOMElement)
+    // console.log(btnDOMElement.dataset.bsToggle)
+    // document.querySelector(" .modal").dataset.bsBackdrop = "static"
+    // data-bs-toggle="modal" 
+    // data-bs-target="#staticBackdrop"
     // - Controllo corretto inserimento dei dati
         const alertDOMElement = document.getElementById("alert");
         if (passengerName === "") {
             var passengerNameUndefined = "Inserisci il nome"
             // pNode.appendChild(document.createTextNode(passengerNameUndefined + "." + " "));
-            alertDOMElement.innerHTML += "<h1>" + passengerNameUndefined + "</h1>"
+            alertDOMElement.innerHTML += "<h1 id=alertName>" + passengerNameUndefined + "</h1>"
             console.log("nome non inserito", typeof passengerNameUndefined)
+        } else {
+            document.getElementById("alert").classList.add ("d-none");
         }
         
         if (passengerSurname === "") {
             var passengerSurnameUndefined = "Inserisci il cognome"
             // pNode.appendChild(document.createTextNode(passengerSurnameUndefined + "." + " "));
-            alertDOMElement.innerHTML += "<h1>" + passengerSurnameUndefined + "</h1>"
+            alertDOMElement.innerHTML += "<h1 id=alertSurname>" + passengerSurnameUndefined + "</h1>"
             console.log("Cognome non inserito", typeof passengerSurnameUndefined)
+        } else {
+            document.getElementById("alert").classList.add ("d-none");
         }
         
-        if (isNaN(distanceTrip)) {
+        if (isNaN(distanceTrip) || distanceTrip < 0) {
             var distanceTripNull = "Inserisci la distanza"
             // pNode.appendChild(document.createTextNode(distanceTripNull + "." + " "));
-            alertDOMElement.innerHTML += "<h1>" + distanceTripNull + "</h1>"
+            alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
             console.log("Distanza non inserita")
+        } else {
+            document.getElementById("alert").classList.add ("d-none");
         }
         
         if (isNaN(passengerDiscountEntity)) {
-            var passengerDiscountEntitypNull = "Selezioni tipo di discount"
+            var passengerDiscountEntitypNull = "Selezioni tipo di'"
             // pNode.appendChild(document.createTextNode(passengerAgepNull + "." + " "));
             alertDOMElement.innerHTML += "<h1>" + passengerDiscountEntitypNull + "</h1>"
             console.log("Eta non inserita")
+        } else {
+            document.getElementById("alert").classList.add ("d-none");
         }
+
+        if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip < 0 || inputDiscountSelectDOMElement.value == 0) {
+            alert("I dati non sono inserite correttamente!")
+            document.getElementById("alert").classList.remove ("d-none");
+        } else {
+            document.getElementById("titleTicket").classList.remove ("d-none");
+            document.getElementById("cardTicket").classList.remove ("d-none");
+        }
+
+
+    // # Creazione biglietto 
+    // - Pescare Dom Elementi con id e assegnare i valori di interesse
+
+    document.getElementById("ticketPassengerName").innerHTML = passengerName;
+    document.getElementById("ticketPassengerSurname").innerHTML = passengerSurname;
+    document.getElementById("ticketDistanceTrip").innerHTML = distanceTrip;
+    document.getElementById("ticketCategoryDiscount").innerHTML = categoryDiscount;
+    document.getElementById("ticketDiscount").innerHTML = passengerDiscountEntity * 100 + " %";
+    document.getElementById("ticketPriceBasic").innerHTML = priceBasic + " Euro";
+    document.getElementById("ticketTotalPrice").innerHTML = totalPrice + " Euro";
+
 });
       
 //         - Creare console log per controllo
-// # Creazione biglietto
-
-// - Pescare Dom Elementi con id e assegnare i valori di interesse
-
-
 
 
 
