@@ -84,10 +84,14 @@ btnDOMElement.addEventListener("click", function() {
             // pNode.appendChild(document.createTextNode(passengerNameUndefined + "." + " "));
             // alertDOMElement.innerHTML += "<h1 id=alertName>" + passengerNameUndefined + "</h1>"
             document.getElementById("alertName").classList.remove ("d-none");
+            inputNameDOMElement.classList.remove ("border-success");
+            inputNameDOMElement.classList.add ("border-danger", "border-3");
             console.log("nome non inserito", typeof passengerNameUndefined)
         } else {
             document.getElementById("alert").classList.add ("d-none");
             document.getElementById("alertName").classList.add ("d-none");
+            inputNameDOMElement.classList.remove ("border-danger", "border-3");
+            inputNameDOMElement.classList.add ("border-success");
         }
         
         if (passengerSurname === "") {
@@ -95,10 +99,14 @@ btnDOMElement.addEventListener("click", function() {
             // pNode.appendChild(document.createTextNode(passengerSurnameUndefined + "." + " "));
             // alertDOMElement.innerHTML += "<h1 id=alertSurname>" + passengerSurnameUndefined + "</h1>"
             document.getElementById("alertSurname").classList.remove ("d-none");
+            inputSurnameDOMElement.classList.remove ("border-success");
+            inputSurnameDOMElement.classList.add ("border-danger", "border-3");
             console.log("Cognome non inserito", typeof passengerSurnameUndefined)
         } else {
             document.getElementById("alert").classList.add ("d-none");
             document.getElementById("alertSurname").classList.add ("d-none");
+            inputSurnameDOMElement.classList.remove ("border-danger", "border-3");
+            inputSurnameDOMElement.classList.add ("border-success");
         }
         
         if (isNaN(distanceTrip)) {
@@ -107,15 +115,21 @@ btnDOMElement.addEventListener("click", function() {
             // alertDOMElement.innerHTML += "<h1 id=alertDistance>" + distanceTripNull + "</h1>"
             document.getElementById("alertDistance").classList.remove ("d-none");
             document.getElementById("alertDistance").innerHTML = distanceTripNull;
+            inputDistanceTripDOMElement.classList.remove ("border-success");
+            inputDistanceTripDOMElement.classList.add ("border-danger", "border-3");
             console.log("Distanza non inserita");
         } else if (distanceTrip <= 0) {
             var distanceTripNull = "Il valore di distanza deve essere maggiore di 0"
             document.getElementById("alertDistance").classList.remove ("d-none");
             document.getElementById("alertDistance").innerHTML = distanceTripNull;
+            inputDistanceTripDOMElement.classList.remove ("border-success");
+            inputDistanceTripDOMElement.classList.add ("border-danger", "border-3");
             console.log("Distanza non inserita");
         } else {
             document.getElementById("alert").classList.add ("d-none");
             document.getElementById("alertDistance").classList.add ("d-none");
+            inputDistanceTripDOMElement.classList.remove ("border-danger", "border-3");
+            inputDistanceTripDOMElement.classList.add ("border-success");
         }
         
         if (isNaN(passengerDiscountEntity)) {
@@ -123,10 +137,14 @@ btnDOMElement.addEventListener("click", function() {
             // pNode.appendChild(document.createTextNode(passengerAgepNull + "." + " "));
             // alertDOMElement.innerHTML += "<h1>" + passengerDiscountEntitypNull + "</h1>"
             document.getElementById("alertDiscountNull").classList.remove ("d-none");
+            inputDiscountSelectDOMElement.classList.remove ("border-success");
+            inputDiscountSelectDOMElement.classList.add ("border-danger", "border-3");
             console.log("Eta non inserita")
         } else {
             document.getElementById("alert").classList.add ("d-none");
             document.getElementById("alertDiscountNull").classList.add ("d-none");
+            inputDiscountSelectDOMElement.classList.remove ("border-danger", "border-3");
+            inputDiscountSelectDOMElement.classList.add ("border-success");
         }
 
         if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip <= 0 || inputDiscountSelectDOMElement.value == 0) {
