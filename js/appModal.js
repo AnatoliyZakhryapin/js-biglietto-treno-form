@@ -19,6 +19,7 @@ const DISCOUNT_UNDER_18 = 0.2;
 const DISCOUNT_OVER_65 = 0.4;
 const DISCOUNT_NOT = 0;
 const DISCOUNT_NOT_SELECT = "Discount non selezionato";
+
 //     - Creazione del evento onclick
 btnDOMElement.addEventListener("click", function() {
     //         - Recupero il nome dal input
@@ -71,6 +72,11 @@ btnDOMElement.addEventListener("click", function() {
     const totalPrice = Number((priceBasic - discountPassenger).toFixed(2));
     console.log("Prezzo totale è " + totalPrice + " " + "Euro", typeof totalPrice);
    
+    // btnDOMElement.dataset.bsToggle = "modal"
+    // console.dir(btnDOMElement)
+    // console.log(btnDOMElement.dataset.bsToggle)
+    // data-bs-toggle="modal" 
+    // data-bs-target="#staticBackdrop"
     // - Controllo corretto inserimento dei dati
         const alertDOMElement = document.getElementById("alert");
         if (passengerName === "") {
@@ -142,11 +148,12 @@ btnDOMElement.addEventListener("click", function() {
         }
 
         if (typeof passengerNameUndefined === 'string' || typeof passengerSurnameUndefined === 'string' || typeof distanceTripNull === 'string' || distanceTrip <= 0 || inputDiscountSelectDOMElement.value == 0) {
-            alert("I dati non sono inserite correttamente!")
             document.getElementById("alert").classList.remove ("d-none");
+            document.querySelector(".modal").dataset.bsBackdrop = "static"
         } else {
             document.getElementById("titleTicket").classList.remove ("d-none");
             document.getElementById("cardTicket").classList.remove ("d-none");
+            document.querySelector(".modal").dataset.bsBackdrop = "";
         }
 
 
